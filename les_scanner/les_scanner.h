@@ -16,12 +16,12 @@ class les_scanner{
 		void Update ();
 		void shiftDisplay (byte data);
 		int current_mode;
+		int cycle_time;
 
 	private:
 				void calcArgsMode1();
 				void calcArgsMode2();
 				void calcArgsMode3();
-        int cycle_time;
 				unsigned long last_update;
 				int current_position;
 				byte array_argument;
