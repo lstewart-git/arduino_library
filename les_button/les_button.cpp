@@ -5,7 +5,6 @@
 
 
 les_button::les_button(int debounce, int modes){
-
   #define BUTT_PIN 2
 	state_flag = 0;
 	debounce_millis = debounce;
