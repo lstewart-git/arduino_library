@@ -7,7 +7,8 @@ les_rgb_led::les_rgb_led(byte unused){
     #define RED_PIN 5
     #define GREEN_PIN 9
     #define BLUE_PIN  3
-
+	FlipTimer = 0;
+	FlipFlag = 0;
 }
 
    void les_rgb_led::Setup()
@@ -15,12 +16,17 @@ les_rgb_led::les_rgb_led(byte unused){
 	pinMode(RED_PIN, OUTPUT);
 	pinMode(GREEN_PIN, OUTPUT);
 	pinMode(BLUE_PIN, OUTPUT);
-  SetOff();
+
+    SetOff();
 
   }
-
+// MAIN UPDATE METHOD
   void les_rgb_led::Update()
   {
+	  if (FlipFlag){
+		  SetColor(255, 0, 0);
+		  SetOn();
+	  }
   }
 
   void les_rgb_led::ShowColor(int colorcode)
@@ -38,6 +44,22 @@ les_rgb_led::les_rgb_led(byte unused){
 	  BluePower = bp;
   }
 
+    void les_rgb_led::SetFlipTime(int flip_interval_ms)
+  {
+	  FlipTimer =  flip_interval_ms;
+  }
+  
+     void les_rgb_led::FlipOn()
+  {
+	  FlipFlag =  1;
+  }
+  
+      void les_rgb_led::FlipOff()
+  {
+	  FlipFlag =  0;
+  }
+
+ 
   void les_rgb_led::SetOn(){
 	  analogWrite(RED_PIN, RedPower);
 	  analogWrite(GREEN_PIN, GreenPower);
