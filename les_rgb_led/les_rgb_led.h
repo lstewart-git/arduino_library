@@ -22,11 +22,11 @@ class les_rgb_led{
 		void SetColor(int rp, int gp, int bp);
 		void SetOn ();
 		void SetOff ();
-        void ShowColor(int colorcode);
+    void ShowColor(int colorcode);
 		void SetFlipTime (int flip_interval_ms);
 		void FlipOn();
 		void FlipOff();
-		
+
 
 	// private:
 
@@ -44,6 +44,8 @@ class les_rgb_led{
     int BluePower;
 	int FlipTimer;
 	int FlipFlag;
+	unsigned long last_flip_time;
+	int flip_color;
 
 };
 
