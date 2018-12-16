@@ -14,7 +14,7 @@ modes 1 - num_modes repeatedly
 class les_button_v2{
 
 	public:
-		les_button_v2 (int debounce_millis, int modes);
+		les_button_v2 (int pin_num, int debounce_millis, int modes);
 		void Setup ();
 		void Update ();
 		int state_flag;
@@ -24,6 +24,7 @@ class les_button_v2{
 		unsigned long debounce_millis;
 		unsigned long last_press_time = 0;
         int num_modes;
+		int butt_pin;
 };
 
 

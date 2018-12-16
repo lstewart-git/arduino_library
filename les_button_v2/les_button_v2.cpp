@@ -4,16 +4,16 @@
 #include "les_button_v2.h"
 
 
-les_button_v2::les_button_v2(int debounce, int modes){
-  #define BUTT_PIN 2
+les_button_v2::les_button_v2(int pin_num, int debounce, int modes){
+  butt_pin = pin_num;
 	state_flag = 0;
 	debounce_millis = debounce;
-    num_modes = modes;
+  num_modes = modes;
 }
 
   void les_button_v2::Setup()
   {
-	 pinMode(BUTT_PIN, INPUT_PULLUP);
+	 pinMode(butt_pin, INPUT_PULLUP);
   }
 
 
@@ -21,7 +21,7 @@ les_button_v2::les_button_v2(int debounce, int modes){
   {
     // check to see if it's time to change internal state
   unsigned long currentMillis = millis();
-	int buttval = digitalRead(BUTT_PIN);
+	int buttval = digitalRead(butt_pin);
 	// check that debounce timer fm last press expired
 	if (currentMillis > last_press_time + debounce_millis){
 
